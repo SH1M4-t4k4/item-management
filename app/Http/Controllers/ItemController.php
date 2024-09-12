@@ -21,21 +21,27 @@ class ItemController extends Controller
     /**
      * 商品一覧
      */
-    public function index()
+    public function index(Request $request)
     {
-        // 商品一覧取得
-        $items = Item::all();
+        $query = Item::query();
+
+        // 種別で検索
+        if ($request->has('type') && !empty($request->input('type'))) {
+            $query->where('type', 'like', '%' . $request->input('type') . '%');
+        }
+
+        $items = $query->get();
 
         return view('item.index', compact('items'));
     }
 
-    /**
-     * 商品登録
-     */
-    public function add(Request $request)
-    {
-        // POSTリクエストのとき
-        if ($request->isMethod('post')) {
+        /**
+         * 商品登録
+         */
+        public function add(Request $request)
+        {
+            // POSTリクエストのとき
+            if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
                 'name' => 'required|max:100',
@@ -50,10 +56,10 @@ class ItemController extends Controller
             ]);
 
             return redirect('/items');
-        }
+            }
 
         return view('item.add');
-    }
+        }
 
     /**
      * 商品編集フォームの表示
