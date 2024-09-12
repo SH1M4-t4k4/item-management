@@ -7,6 +7,12 @@
 @stop
 
 @section('content')
+<!-- 成功メッセージの表示 -->
+@if (session('success'))
+<div class="alert alert-success">
+{{ session('success') }}
+</div>
+@endif
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -28,6 +34,7 @@
                                 <th>名前</th>
                                 <th>種別</th>
                                 <th>詳細</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +44,14 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
+                                    <td>
+                                        <!-- 削除ボタン -->
+                                        <form action="{{ route('items.delete', $item->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">削除</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

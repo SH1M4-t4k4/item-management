@@ -54,4 +54,14 @@ class ItemController extends Controller
 
         return view('item.add');
     }
+
+    public function delete($id)
+    {
+        // 該当する商品をデータベースから削除
+        $item = Item::findOrFail($id);
+        $item->delete();
+    
+        // 商品一覧ページにリダイレクト
+        return redirect()->route('items.index')->with('success', '商品が削除されました。');
+    }
 }

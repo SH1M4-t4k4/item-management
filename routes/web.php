@@ -25,4 +25,11 @@ Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
+    Route::delete('/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('items.delete');
+
+// 商品一覧ページのルート
+Route::get('/items', [App\Http\Controllers\ItemController::class, 'index'])->name('items.index');
+
+// 商品削除のルート
+Route::delete('/items/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('items.delete');
 });
