@@ -55,6 +55,35 @@ class ItemController extends Controller
         return view('item.add');
     }
 
+    /**
+     * 商品編集フォームの表示
+     */
+    public function edit($id)
+    {
+        $item = Item::findOrFail($id);
+        return view('item.edit', compact('item'));
+    }
+
+    /**
+     * 商品の更新
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'type' => 'required',
+            'detail' => 'required',
+        ]);
+
+        $item = Item::findOrFail($id);
+        $item->name = $request->name;
+        $item->type = $request->type;
+        $item->detail = $request->detail;
+        $item->save();
+
+        return redirect()->route('items.index')->with('success', '商品が更新されました');
+    }
+
     public function delete($id)
     {
         // 該当する商品をデータベースから削除

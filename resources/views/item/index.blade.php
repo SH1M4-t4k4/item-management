@@ -45,6 +45,8 @@
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
                                     <td>
+                                        <!-- 編集ボタン -->
+                                        <a href="{{ route('items.edit', $item->id) }}" class="btn btn-warning">編集</a>
                                         <!-- 削除ボタン -->
                                         <form action="{{ route('items.delete', $item->id) }}" method="POST" style="display:inline;">
                                         @csrf
