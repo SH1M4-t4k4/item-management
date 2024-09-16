@@ -75,10 +75,13 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // バリデーション
         $this->validate($request, [
-            'name' => 'required|max:100',
+            'name' => ['required', 'max:100', 'regex:/^[^!@#$%^&*()_+={}\[\]:;"\'<>,.?\/\\]+$/u'],
             'type' => 'required',
             'detail' => 'required',
+        ], [
+            'name.regex' => '名前には記号を含めることはできません。'
         ]);
 
         $item = Item::findOrFail($id);
