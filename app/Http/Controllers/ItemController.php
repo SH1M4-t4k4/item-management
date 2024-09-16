@@ -25,10 +25,14 @@ class ItemController extends Controller
     {
         $query = Item::query();
 
-        // 種別で検索
-        if ($request->has('type') && !empty($request->input('type'))) {
-            $query->where('type', 'like', '%' . $request->input('type') . '%');
-        }
+        // 名前または種別で検索
+    if ($request->has('keyword') && !empty($request->input('keyword'))) {
+        $keyword = $request->input('keyword');
+        $query->where(function($q) use ($keyword) {
+            $q->where('name', 'like', '%' . $keyword . '%')
+            ->orWhere('type', 'like', '%' . $keyword . '%');
+        });
+    }
 
         $items = $query->get();
 

@@ -18,7 +18,8 @@
 <form method="GET" action="{{ url('items') }}">
     <div class="row mb-3">
         <div class="col-md-4">
-            <input type="text" name="type" class="form-control" placeholder="種別で検索" value="{{ request('type') }}">
+            <!-- 名前・種別で検索 -->
+            <input type="text" name="keyword" placeholder="商品名または種別を入力" value="{{ request()->input('keyword') }}">
         </div>
         <div class="col-md-2">
             <button type="submit" class="btn btn-primary">検索</button>
