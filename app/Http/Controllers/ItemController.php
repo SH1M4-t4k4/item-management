@@ -77,7 +77,7 @@ class ItemController extends Controller
     {
         // バリデーション
         $this->validate($request, [
-            'name' => ['required', 'max:100', 'regex:/^[^!@#$%^&*()_+={}\[\]:;"\'<>,.?\/\\]+$/u'],
+            'name' => ['required', 'max:100', 'regex:/^[^!@#\$%\^&\*\(\)_\+=\{\}\[\]:;"\'<>,\.\?\/\\\\]+$/u'],
             'type' => 'required',
             'detail' => 'required',
         ], [
