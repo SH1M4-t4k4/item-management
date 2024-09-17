@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned()->index();
             $table->string('name', 100)->index();
-            $table->text('type')->nullable()->change();
-            $table->text('detail')->nullable()->change();
+            $table->string('type', 100)->nullable();
+            $table->string('detail', 500)->nullable();
             $table->timestamps();
         });
     }
@@ -26,10 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('items', function (Blueprint $table) {
-            // 変更を元に戻す（必要に応じて）
-            $table->string('type', 100)->nullable()->change();
-            $table->string('detail', 500)->nullable()->change();
-        });
+        Schema::dropIfExists('items');
     }
 };
