@@ -25,7 +25,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::prefix('items')->group(function () {
     // 商品一覧ページのルート
-    Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\ItemController::class, 'index'])->name('items.index');
 
     // 商品登録のルート
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
@@ -33,7 +33,7 @@ Route::prefix('items')->group(function () {
 
     // 商品編集のルート
     Route::get('/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('items.edit');
-    Route::post('/{id}/update', [App\Http\Controllers\ItemController::class, 'update'])->name('items.update');
+    Route::put('/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('items.update');
 
     // 商品削除のルート
     Route::delete('/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('items.delete');
