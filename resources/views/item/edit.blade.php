@@ -22,11 +22,19 @@
         <div class="form-group">
             <label for="type">種別</label>
             <input type="text" id="type" name="type" class="form-control" value="{{ $item->type }}" required>
+            
+            @error('type')
+                <div class="text-danger">{{ 種別は100文字以内で入力してください。 }}</div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="detail">詳細</label>
             <textarea id="detail" name="detail" class="form-control" required>{{ $item->detail }}</textarea>
+
+            @error('detail')
+                <div class="text-danger">{{ 詳細は500文字以内で入力してください。 }}</div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">更新</button>
