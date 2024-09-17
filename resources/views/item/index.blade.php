@@ -55,9 +55,9 @@
                         @foreach ($items as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->type }}</td>
-                                <td>{{ $item->detail }}</td>
+                                <td>{{ Str::limit($item->name, 20, '...') }}</td>
+                                <td>{{ Str::limit($item->type, 20, '...') }}</td>
+                                <td>{{ Str::limit($item->detail, 50, '...') }}</td> 
                                 <td>
                                     <!-- 編集ボタン -->
                                     <a href="{{ route('items.edit', $item->id) }}" class="btn btn-warning">編集</a>
