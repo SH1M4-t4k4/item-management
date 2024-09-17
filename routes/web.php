@@ -28,6 +28,7 @@ Route::prefix('items')->group(function () {
     Route::get('/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('items.edit');
     Route::post('/{id}/update', [App\Http\Controllers\ItemController::class, 'update'])->name('items.update');
     Route::delete('/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('items.delete');
+    Route::put('/items/{id}', [ItemController::class, 'update'])->name('items.update');
 
 // 商品一覧ページのルート
 Route::get('/items', [App\Http\Controllers\ItemController::class, 'index'])->name('items.index');
