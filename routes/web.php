@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,17 +24,18 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('items')->group(function () {
+    // 商品一覧ページのルート
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
+
+    // 商品登録のルート
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
+
+    // 商品編集のルート
     Route::get('/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('items.edit');
     Route::post('/{id}/update', [App\Http\Controllers\ItemController::class, 'update'])->name('items.update');
+
+    // 商品削除のルート
     Route::delete('/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('items.delete');
-    Route::put('/items/{id}', [ItemController::class, 'update'])->name('items.update');
 
-// 商品一覧ページのルート
-Route::get('/items', [App\Http\Controllers\ItemController::class, 'index'])->name('items.index');
-
-// 商品削除のルート
-Route::delete('/items/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name('items.delete');
 });
