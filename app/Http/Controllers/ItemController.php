@@ -84,8 +84,8 @@ class ItemController extends Controller
         // バリデーション
         $this->validate($request, [
             'name' => ['required', 'max:100', 'regex:/^[^!@#\$%\^&\*\(\)_\+=\{\}\[\]:;"\'<>,\.\?\/\\\\]+$/u'],
-            'type' => 'required',
-            'detail' => 'required',
+            'type' => 'nullable|string|max:100',
+            'detail' => 'nullable|string|max:500',
         ], [
             'name.regex' => '名前には記号を含めることはできません。'
         ]);
