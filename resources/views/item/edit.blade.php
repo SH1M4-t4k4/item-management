@@ -22,7 +22,7 @@
 
         <div class="form-group">
             <label for="type">種別</label>
-            <input type="text" id="type" name="type" class="form-control" value="{{ old('type', $item->type) }}" required>
+            <input type="text" id="type" name="type" class="form-control" value="{{ old('type', $item->type) }}">
             
             @if ($errors->has('type'))
                 <div class="text-danger">{{ $errors->first('type') }}</div>
