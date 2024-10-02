@@ -1,43 +1,47 @@
-## 商品管理システム
+# 文房具の商品管理システム
 
-### 環境構築手順
+## 概要
+このシステムは、Laravelを使用して作成された商品管理システムのプロジェクトです。
+ユーザーは商品の登録、編集、削除が可能です。会員管理機能もあり、ユーザー登録や情報編集を行うことができます。
 
-* Gitクローン
-* .env.example をコピーして .env を作成
-* MySQLのデータベース作成（名前：item_management）
-* Macの場合 .env の DB_PASSWORD を root に修正（Windowsは修正不要）
+## 主な機能
 
-    ```INI
-    DB_PASSWORD=root
-    ```
+- ユーザー管理
+  - 会員登録、編集、削除機能
+  - ユーザーの一覧表示
+- 商品管理
+  - 商品の登録、編集、削除機能
+  - 商品の一覧表示
+- ログイン認証
+  - 認証済みユーザーのみがアクセス可能
 
-* APP_KEY生成
+## システム要件
 
-    ```console
-    php artisan key:generate
-    ```
+- PHP 8.0 以上
+- Laravel 10.x
+- MySQL 5.7 以上
+- Node.js 14.x 以上
+- Composer 2.x
 
-* Composerインストール
+## 設計書
+[設計書ページへ](https://drive.google.com/drive/folders/1GHh_d60xWeXNAFQLkg_pbFJrmbpI3Mj1)
 
-    ```console
-    composer install
-    ```
+## システム閲覧
+[アプリケーションページへ](https://techis-item-management-laravel-57d856dd4408.herokuapp.com/login)
+### テストアカウント情報
+```
+メールアドレス : admin@test.jp
+パスワード : testtest
+```
 
-* フロント環境構築
 
-    ```console
-    npm ci
-    npm run build
-    ```
 
-* マイグレーション
+## インストール
 
-    ```console
-    php artisan migrate
-    ```
+### 1. リポジトリのクローン
 
-* 起動
+まず、このリポジトリをローカル環境にクローンします。
 
-    ```console
-    php artisan serve
-    ```
+```bash
+git clone https://github.com/ユーザー名/リポジトリ名.git
+cd リポジトリ名
